@@ -70,3 +70,21 @@ function errorData(error){
     containerData.innerHTML = dataError.innerHTML
 }
 
+
+
+let array1 = [1,2,3,4,5,6,7,[8,9,['x','y',[{name:'carlos',lastName: 'ortiz'}]]],[10,11]]
+
+  /*  flat nos sirve para aplanar un array de manera recursiva, es decir si tengo 3 subarray anidados, necesitaria 3 flat para aplanarlo
+      y hacer de que ese array sea de un solo nivel, el metodo flat no muta el array original
+  */
+  let response1 =  array1.flat().flat().flat() 
+  console.log(response1)
+
+  let array2 = [1,2,3,4]
+/* el metodo fill nos sirve para remplazar elementos de un array con otros elementos, especificandole desde donde inciara ese remplazo, hasta
+  donde finalizara, si omitimos este tercer parametro(que es opcional) el remplazo sera desde el indice indicado hasta el final del array, recalcar que el
+  metodo muta el array original
+*/
+
+  let response2 = array2.fill({name:'carlos', lastName:21},1,3)
+  console.log(response2)
