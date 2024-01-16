@@ -22,7 +22,7 @@ function submitData(e) {
     form.reset()
 }
 
-async function petitionApi(nameCity) {
+async function petitionApi(nameCity = 'lima') {
     try {
         let response = await fetch(`${APIURL2}${nameCity}&appid=${APIKEY}`)
         console.log(response)
@@ -40,6 +40,7 @@ async function petitionApi(nameCity) {
     }
  
 }
+petitionApi()
 
 function showData(data) {
     
@@ -48,12 +49,14 @@ function showData(data) {
 
    const containerTemplate = document.createElement('div')
    containerTemplate.innerHTML = `
-        <h1> clima de : ${name}</h1>
-        <h1> pais : ${country}</h1>
-        <img src=${ICONS}${valor.icon}@2x.png>
-        <h2>temperatura: ${parseInt(temp-273.15)}°</h2>
-        <h3>temperatura maxima: ${parseInt(temp_max-273.15)}°</h3>
-        <h3>temperatura minima: ${parseInt(temp_min-273.15)}°</h3>
+        <div class ='card-body text-center text-capitalize text-info'>
+            <h1> clima de : ${name}</h1>
+            <h1> pais : ${country}</h1>
+            <img src=${ICONS}${valor.icon}@2x.png>
+            <h2>temperatura: ${parseInt(temp-273.15)}°</h2>
+            <h3>temperatura maxima: ${parseInt(temp_max-273.15)}°</h3>
+            <h3>temperatura minima: ${parseInt(temp_min-273.15)}°</h3>
+        </div>
    `
    // console.log(containerTemplate)
    containerData.innerHTML= containerTemplate.innerHTML
@@ -66,7 +69,7 @@ function showData(data) {
 
 function errorData(error){
     const dataError = document.createElement('div')
-    dataError.innerHTML = `<h1>${error}</h1>`
+    dataError.innerHTML = `<h1 class ='text-danger text-center'>${error}</h1>`
     containerData.innerHTML = dataError.innerHTML
 }
 
